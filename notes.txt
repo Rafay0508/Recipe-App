@@ -1,0 +1,16 @@
+search list by ingredient
+https://www.themealdb.com/images/ingredients/Black%20Pepper.png
+
+product search
+www.themealdb.com/api/json/v1/1/search.php?s=A
+
+
+product detail by ID
+www.themealdb.com/api/json/v1/1/lookup.php?i=52772
+
+
+Search by Category
+www.themealdb.com/api/json/v1/1/filter.php?c=beef
+
+list all category
+www.themealdb.com/api/json/v1/1/categories.php
