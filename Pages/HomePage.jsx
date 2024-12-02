@@ -7,25 +7,11 @@ import {
 } from 'react-native-responsive-screen';
 import {BellIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline';
 import {TextInput} from 'react-native-gesture-handler';
+import Categories from '../components/Categories';
+import Recipes from '../components/Recipes';
 
 const HomePage = () => {
-  const [category, setCategory] = useState([]);
   const [recipes, setRecipes] = useState([]);
-  useEffect(() => {
-    const fetchCategory = async () => {
-      const response = await fetch(
-        'https://www.themealdb.com/api/json/v1/1/categories.php',
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setCategory(data.categories);
-      } else {
-        console.error('Failed to fetch categories');
-      }
-    };
-
-    fetchCategory();
-  }, []);
 
   useEffect(() => {
     const fetchRecipesByCategory = async () => {
@@ -76,77 +62,12 @@ const HomePage = () => {
         </View>
       </View>
       <View>
-        <ScrollView horizontal style={styles.categoryContainer}>
-          {category &&
-            category.sort().map(item => {
-              return (
-                <View style={styles.category} key={item.idCategory}>
-                  <View style={styles.categoryImgContainer}>
-                    <Image
-                      source={{
-                        uri: item.strCategoryThumb,
-                      }}
-                      style={[{width: 40, height: 40}, styles.categoryImg]}
-                    />
-                  </View>
-                  <Text style={{textAlign: 'center'}}>{item.strCategory}</Text>
-                </View>
-              );
-            })}
-        </ScrollView>
+        <Categories />
       </View>
       <View style={styles.recipeContainer}>
         <Text style={styles.heading}>Recipes</Text>
         <ScrollView>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-            }}>
-            {recipes &&
-              recipes.map(item => {
-                return (
-                  <View
-                    key={item.idMeal}
-                    style={{
-                      borderWidth: 1,
-                      width: wp('38%'),
-                      height: hp('30%'),
-                      backgroundColor: '#fff',
-                      borderRadius: 10,
-                      shadowColor: '#000',
-                      shadowOffset: {width: 0, height: 2},
-                      shadowOpacity: 0.25,
-                      shadowRadius: 3.5,
-                      elevation: 5, // For Android shadow
-                      margin: 10,
-                      alignItems: 'center',
-                      padding: 10,
-                    }}>
-                    <Image
-                      source={{uri: item.strMealThumb}}
-                      style={{
-                        width: '100%',
-                        height: '60%',
-                        borderRadius: 10,
-                        marginBottom: 10,
-                      }}
-                    />
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: 'bold',
-                        textAlign: 'center',
-                      }}>
-                      {item.strMeal.length > 30
-                        ? item.strMeal.slice(0, 30) + '...'
-                        : item.strMeal}
-                    </Text>
-                  </View>
-                );
-              })}
-          </View>
+          <Recipes />
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -186,16 +107,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: '100%',
   },
-  categoryContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 10,
-  },
-  category: {padding: '4', alignItems: 'center'},
-  categoryImgContainer: {
-    padding: 10,
-    backgroundColor: '#E6E6E6',
-    borderRadius: '100%',
-  },
+  // categoryContainer: {
+  //   flexDirection: 'row',
+  //   paddingHorizontal: 10,
+  // },
+  // category: {padding: '4', alignItems: 'center'},
+  // categoryImgContainer: {
+  //   padding: 10,
+  //   backgroundColor: '#E6E6E6',
+  //   borderRadius: '100%',
+  // },
   categoryImg: {},
   recipeContainer: {padding: 20},
   heading: {fontSize: hp(3), fontWeight: 'bold', marginVertical: 3},
