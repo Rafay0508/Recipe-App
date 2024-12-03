@@ -1,3 +1,9 @@
+![image](https://github.com/user-attachments/assets/05b7a23b-c13d-433e-8586-ddfbf202f720)
+
+![image](https://github.com/user-attachments/assets/8ff86119-bbda-43cf-91ea-10366d043d7d)
+![image](https://github.com/user-attachments/assets/72ce351c-91f9-42a6-8974-384bd1d2b58a)
+
+
 # Recipe App
 
 A mobile application built with **React Native** that allows users to explore a vast collection of recipes using data from **TheMealDB API**. The app offers a rich user experience for discovering, searching, and saving recipes from a variety of cuisines worldwide. With advanced search features, filtering options, and the ability to save favorites, users can easily find the perfect recipe for any meal.
